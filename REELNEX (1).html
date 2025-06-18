@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReelNex | Professional Video Editing Services</title>
+    <base target="_self">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@preline/preline@2.0.0/dist/preline.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-reverse': 'float-reverse 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        'float-reverse': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #10b981);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .video-card:hover .play-icon {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <!-- Navigation -->
+    <nav
+        class="fixed w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-md z-50 border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center gap-2"
+                        onclick="event.preventDefault(); scrollToSection('hero')">
+                        <!-- Logo Image -->
+                        <img src="/WhatsApp Image 2025-06-17 at 6.32.17 PM.jpeg" alt="ReelNex Logo"
+                            class="h-8 w-8 object-contain">
+
+                        <!-- Brand Text -->
+                        <span class="text-2xl font-bold text-gray-900 dark:text-white">
+                            Reel<span class="gradient-text">Nex</span>
+                        </span>
+                    </a>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                        onclick="event.preventDefault(); scrollToSection('services')">Services</a>
+                    <a href="#"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                        onclick="event.preventDefault(); scrollToSection('portfolio')">Portfolio</a>
+                    <a href="#"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                        onclick="event.preventDefault(); scrollToSection('about')">About</a>
+                    <a href="#"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                        onclick="event.preventDefault(); scrollToSection('contact')">Contact</a>
+                    <button id="theme-toggle"
+                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-moon dark:hidden text-gray-700"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-300"></i>
+                    </button>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button"
+                        class="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#"
+                    class="block px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    onclick="event.preventDefault(); scrollToSection('services'); toggleMobileMenu()">Services</a>
+                <a href="#"
+                    class="block px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    onclick="event.preventDefault(); scrollToSection('portfolio'); toggleMobileMenu()">Portfolio</a>
+                <a href="#"
+                    class="block px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    onclick="event.preventDefault(); scrollToSection('about'); toggleMobileMenu()">About</a>
+                <a href="#"
+                    class="block px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    onclick="event.preventDefault(); scrollToSection('contact'); toggleMobileMenu()">Contact</a>
+                <div class="px-3 py-2">
+                    <button id="mobile-theme-toggle" class="flex items-center text-gray-700 dark:text-gray-300">
+                        <i class="fas fa-moon dark:hidden mr-2"></i>
+                        <i class="fas fa-sun hidden dark:block mr-2"></i>
+                        Toggle Theme
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="pt-24 pb-16 md:pt-32 md:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white">
+                    Elevate Your <span class="gradient-text">Video Content</span>
+                </h1>
+                <p class="text-lg text-gray-600 dark:text-gray-400">
+                    Professional video editing services that transform your raw footage into captivating stories.
+                    Perfect for creators, businesses, and brands.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <button onclick="scrollToSection('contact')"
+                        class="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium transition-colors">
+                        Get Started
+                    </button>
+                    <button onclick="scrollToSection('portfolio')"
+                        class="px-6 py-3 border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg font-medium transition-colors">
+                        View Work
+                    </button>
+                </div>
+                <div class="flex items-center space-x-4 pt-4">
+                    <div class="flex -space-x-2">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg"
+                            class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-900" alt="Client">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg"
+                            class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-900" alt="Client">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg"
+                            class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-900" alt="Client">
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Trusted by 500+ creators</p>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <span class="text-gray-900 dark:text-white font-medium">4.9</span>
+                            <span class="text-gray-500 ml-1">(128 reviews)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="relative rounded-2xl overflow-hidden shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+                        alt="Video Editing" class="w-full h-auto rounded-2xl">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-center justify-center">
+                        <button
+                            class="w-16 h-16 bg-primary-600 rounded-full flex items-center justify-center hover:bg-primary-700 transition-colors">
+                            <i class="fas fa-play text-white text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+                <div
+                    class="absolute -bottom-6 -left-6 w-32 h-32 bg-primary-100 dark:bg-primary-900/30 rounded-full -z-10 animate-float">
+                </div>
+                <div
+                    class="absolute -top-6 -right-6 w-24 h-24 bg-purple-100 dark:bg-purple-900/30 rounded-full -z-10 animate-float-reverse">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <span class="text-primary-600 font-medium">OUR SERVICES</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mt-2">Professional Video Editing
+                Solutions</h2>
+            <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-400 mt-4">
+                We offer a range of services to meet all your video production needs, from basic editing to full
+                post-production.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+                class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
+                <div
+                    class="w-14 h-14 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
+                    <i class="fas fa-cut text-primary-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Editing Only</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                    <!-- Clean cuts, transitions, and basic color correction to make your footage look professional. -->
+                </p>
+                <ul class="space-y-2">
+                    <li class="flex items-center text-gray-600 dark:text-gray-400">
+                        <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                        Up to 2 videos/day
+                    </li>
+                    <li class="flex items-center text-gray-600 dark:text-gray-400">
+                        <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                        You provide footage, we deliver clean, scroll-stopping edits
+                    </li>
+                    <li class="flex items-center text-gray-600 dark:text-gray-400">
+                        <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                        Styles: Apple-style, Alex Hormozi, Eman G, clean luxury
+                    </li>
+                </ul>
+                <!-- <div class="mt-6">
+                    <span class="text-2xl font-bold text-gray-900 dark:text-white">$99</span>
+                    <span class="text-gray-500">/video</span>
+                </div> -->
+            </div>
+
+            <div
+                class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700 relative">
+                <div
+                    class="absolute top-0 right-0 bg-primary-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">
+                    Popular
+                </div>
+                <div
+                    class="w-14 h-14 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
+                    <i class="fas fa-film text-primary-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2"> Editing + Ideation & Scripting</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                    <!-- Professional editing with effects, motion graphics, and advanced color grading. -->
+                </p>
+                <ul class="space-y-2">
+                    <li class="flex items-center text-gray-600 dark:text-gray-400">
+                        <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                        Up to 1 video/day
+                    </li>
+                    <li class="flex items-center text-gray-600 dark:text-gray-400">
+                        <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                        We handle ideation, scripting, and editing (any style)
+                    </li>
+                    <li class="flex items-center text-gray-600 dark:text-gray-400">
+                        <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                        Perfect for creators who want strategy + execution
+                    </li>
+                    <!-- <li class="flex items-center text-gray-600 dark:text-gray-400">
+                        <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                        Sound design
+                    </li> -->
+                </ul>
+                <!-- <div class="mt-6">
+                    <span class="text-2xl font-bold text-gray-900 dark:text-white">$299</span>
+                    <span class="text-gray-500">/video</span>
+                </div> -->
+            </div>
+
+            <div
+                class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
+                <div
+                    class="w-14 h-14 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
+                    <i class="fas fa-video text-primary-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Full Content Suite</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                    <!-- End-to-end video production from concept to final delivery. -->
+                </p>
+                <ul class="space-y-2">
+                    <li class="flex items-center text-gray-600 dark:text-gray-400">
+                        <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                        Up to 1 video/day and carousels/week (depends)
+                    </li>
+                    <li class="flex items-center text-gray-600 dark:text-gray-400">
+                        <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                        Includes: Ideation, Scripting, Editing, Carousels
+                    </li>
+                    <li class="flex items-center text-gray-600 dark:text-gray-400">
+                        <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                        Ideal for brands needing full content creation
+                    </li>
+                </ul>
+                <!-- <div class="mt-6">
+                    <span class="text-2xl font-bold text-gray-900 dark:text-white">$999+</span>
+                    <span class="text-gray-500">/project</span>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+<section id="portfolio" class="py-16 bg-gray-100 dark:bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <span class="text-primary-600 font-medium">OUR WORK</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mt-2">Featured Projects</h2>
+            <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-400 mt-4"></p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Video 1 -->
+            <div onclick="openModal('https://res.cloudinary.com/dgmypxszb/video/upload/v1750247170/1_Marketing_Agency_5_gfggyn.mp4')"
+                class="video-card group relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
+                <video src="https://res.cloudinary.com/dgmypxszb/video/upload/v1750247170/1_Marketing_Agency_5_gfggyn.mp4" autoplay muted loop playsinline
+                    class="w-full h-64 object-cover group-hover:opacity-100 opacity-100 transition-opacity"></video>
+                <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                    <h3 class="font-bold text-lg">Freelancer: Yash</h3>
+                </div>
+            </div>
+
+            <!-- Video 2 -->
+            <!-- <div onclick="openModal('/4. Finance Reel.mp4')"
+                class="video-card group relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
+                <video src="/4. Finance Reel.mp4" autoplay muted loop playsinline
+                    class="w-full h-64 object-cover group-hover:opacity-100 opacity-100 transition-opacity"></video>
+                <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                    <h3 class="font-bold text-lg">Freelancer: Yash</h3>
+                </div>
+            </div> -->
+
+            <!-- Video 3 -->
+            <div onclick="openModal('https://res.cloudinary.com/dgmypxszb/video/upload/v1750247163/910989c6884dcb732e6650dac39c2c2f_pa8sey.mp4')"
+                class="video-card group relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
+                <video src="https://res.cloudinary.com/dgmypxszb/video/upload/v1750247163/910989c6884dcb732e6650dac39c2c2f_pa8sey.mp4" autoplay muted loop playsinline
+                    class="w-full h-64 object-cover group-hover:opacity-100 opacity-100 transition-opacity"></video>
+                <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                    <h3 class="font-bold text-lg">Freelancer: Aniket Gupta</h3>
+                </div>
+            </div>
+
+            <!-- Video 4 -->
+            <div onclick="openModal('https://res.cloudinary.com/dgmypxszb/video/upload/v1750247160/VID-20250504-WA0001_emdski.mp4')"
+                class="video-card group relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
+                <video src="https://res.cloudinary.com/dgmypxszb/video/upload/v1750247160/VID-20250504-WA0001_emdski.mp4" autoplay muted loop playsinline
+                    class="w-full h-64 object-cover group-hover:opacity-100 opacity-100 transition-opacity"></video>
+                <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                    <h3 class="font-bold text-lg">Freelancer: Sam</h3>
+                </div>
+            </div>
+            <!-- Video 5-->
+            <div onclick="openModal('https://res.cloudinary.com/dgmypxszb/video/upload/v1750247255/MO_Video_1_c0mixc.mp4')"
+                class="video-card group relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
+                <video src="https://res.cloudinary.com/dgmypxszb/video/upload/v1750247255/MO_Video_1_c0mixc.mp4" autoplay muted loop playsinline
+                    class="w-full h-64 object-cover group-hover:opacity-100 opacity-100 transition-opacity"></video>
+                <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                    <h3 class="font-bold text-lg">Freelancer: Aniket Gupta</h3>
+                </div>
+            </div>
+             <!-- Video 6-->
+            <div onclick="openModal('https://res.cloudinary.com/dgmypxszb/video/upload/v1750247230/1_ruzhw5.mp4')"
+                class="video-card group relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
+                <video src="https://res.cloudinary.com/dgmypxszb/video/upload/v1750247230/1_ruzhw5.mp4" autoplay muted loop playsinline
+                    class="w-full h-64 object-cover group-hover:opacity-100 opacity-100 transition-opacity"></video>
+                <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                    <h3 class="font-bold text-lg">Freelancer: Parnay</h3>
+                </div>
+            </div>
+             <!-- Video 7-->
+            <div onclick="openModal('https://res.cloudinary.com/dgmypxszb/video/upload/v1750247337/Mo_Video_10.1_hxww2j.mp4')"
+                class="video-card group relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
+                <video src="https://res.cloudinary.com/dgmypxszb/video/upload/v1750247337/Mo_Video_10.1_hxww2j.mp4" autoplay muted loop playsinline
+                    class="w-full h-64 object-cover group-hover:opacity-100 opacity-100 transition-opacity"></video>
+                <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                    <h3 class="font-bold text-lg">Freelancer: Parnay</h3>
+                </div>
+            </div>
+              <!-- Video 8-->
+            <div onclick="openModal('https://res.cloudinary.com/dgmypxszb/video/upload/v1750247392/mohit_41.1_rs4bz3.mp4')"
+                class="video-card group relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
+                <video src="https://res.cloudinary.com/dgmypxszb/video/upload/v1750247392/mohit_41.1_rs4bz3.mp4" autoplay muted loop playsinline
+                    class="w-full h-64 object-cover group-hover:opacity-100 opacity-100 transition-opacity"></video>
+                <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                    <h3 class="font-bold text-lg">Freelancer: Aniket Gupta</h3>
+                </div>
+            </div>
+               <!-- Video 9-->
+            <div onclick="openModal('https://res.cloudinary.com/dgmypxszb/video/upload/v1750247313/Political_ziaowf.mp4')"
+                class="video-card group relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
+                <video src="https://res.cloudinary.com/dgmypxszb/video/upload/v1750247313/Political_ziaowf.mp4" autoplay muted loop playsinline
+                    class="w-full h-64 object-cover group-hover:opacity-100 opacity-100 transition-opacity"></video>
+                <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                    <h3 class="font-bold text-lg">Freelancer: Parnay</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-12">
+            <button onclick="scrollToSection('contact')"
+                class="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium transition-colors">
+                Start Your Project
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Popup Video Modal -->
+    <div id="videoModal" class="fixed inset-0 bg-black/70 z-50 hidden justify-center items-center px-4">
+        <div class="relative bg-black rounded-xl overflow-hidden w-full max-w-xl max-h-[80vh] shadow-lg">
+
+            <!-- Close Button -->
+            <button onclick="closeModal()"
+                class="absolute top-2 right-2 text-white text-2xl font-bold z-10 hover:text-red-400 bg-black/50 rounded-full w-8 h-8 flex items-center justify-center">
+                &times;
+            </button>
+
+            <!-- Video -->
+            <video id="modalVideo" controls autoplay class="w-full h-full max-h-[80vh] object-contain">
+                <source src="" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <section id="about" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <span class="text-primary-600 font-medium">TESTIMONIALS</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mt-2">What Our Clients Say
+            </h2>
+            <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-400 mt-4">
+                Don't just take our word for it - hear from some of our satisfied clients.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+                <div class="flex items-center mb-4">
+                    <div class="flex items-center">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                <p class="text-gray-600 dark:text-gray-400 mb-6">
+                    "ReelNex transformed my raw travel footage into a cinematic masterpiece. Their attention to
+                    detail
+                    and creative vision exceeded my expectations."
+                </p>
+                <div class="flex items-center">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-10 h-10 rounded-full mr-4"
+                        alt="Sarah J.">
+                    <div>
+                        <h4 class="font-bold text-gray-900 dark:text-white">Sarah J.</h4>
+                        <p class="text-sm text-gray-500">Travel Vlogger</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+                <div class="flex items-center mb-4">
+                    <div class="flex items-center">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                <p class="text-gray-600 dark:text-gray-400 mb-6">
+                    "As a small business owner, I needed professional product videos but didn't have the skills.
+                    ReelNex
+                    delivered exactly what I needed at an affordable price."
+                </p>
+                <div class="flex items-center">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full mr-4"
+                        alt="Michael T.">
+                    <div>
+                        <h4 class="font-bold text-gray-900 dark:text-white">Michael T.</h4>
+                        <p class="text-sm text-gray-500">E-commerce Owner</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+                <div class="flex items-center mb-4">
+                    <div class="flex items-center">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                <p class="text-gray-600 dark:text-gray-400 mb-6">
+                    "The corporate video ReelNex produced for our company perfectly captured our brand identity.
+                    Their
+                    team was professional and easy to work with."
+                </p>
+                <div class="flex items-center">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-10 h-10 rounded-full mr-4"
+                        alt="Jennifer L.">
+                    <div>
+                        <h4 class="font-bold text-gray-900 dark:text-white">Jennifer L.</h4>
+                        <p class="text-sm text-gray-500">Marketing Director</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-primary-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Elevate Your Video Content?</h2>
+            <p class="max-w-2xl mx-auto text-primary-100 mb-8">
+                Whether you're a content creator, business owner, or marketer, we can help you create
+                professional
+                videos that engage your audience.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button onclick="scrollToSection('contact')"
+                    class="px-6 py-3 bg-white hover:bg-gray-100 text-primary-600 rounded-lg font-medium transition-colors">
+                    Get Started
+                </button>
+                <button onclick="scrollToSection('portfolio')"
+                    class="px-6 py-3 border border-white/30 hover:bg-white/10 rounded-lg font-medium transition-colors">
+                    View Portfolio
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="text-primary-600 font-medium">CONTACT US</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mt-2">Let's Create
+                    Something
+                    Amazing</h2>
+                <p class="text-gray-600 dark:text-gray-400 mt-4 mb-8">
+                    Have a project in mind? Fill out the form and we'll get back to you within 24 hours to
+                    discuss your
+                    video editing needs.
+                </p>
+
+                <div class="space-y-6">
+                    <div class="flex items-start">
+                        <div
+                            class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-envelope text-primary-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-900 dark:text-white">Email Us</h4>
+                            <p class="text-gray-600 dark:text-gray-400">ssarjun093@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div
+                            class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-phone-alt text-primary-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-900 dark:text-white">Call Us</h4>
+                            <p class="text-gray-600 dark:text-gray-400">+91 8851325004</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div
+                            class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-map-marker-alt text-primary-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-900 dark:text-white">Visit Us</h4>
+                            <p class="text-gray-600 dark:text-gray-400">Noida, UP, India
+                              </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+                <form id="contactForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
+                            <input type="text" id="name" name="name"
+                                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-900 dark:text-white"
+                                required>
+                        </div>
+                        <div>
+                            <label for="email"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                            <input type="email" id="email" name="email"
+                                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-900 dark:text-white"
+                                required>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="subject"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Subject</label>
+                        <input type="text" id="subject" name="subject"
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-900 dark:text-white"
+                            required>
+                    </div>
+                    <div>
+                        <label for="message"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
+                        <textarea id="message" name="message" rows="4"
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-900 dark:text-white"
+                            required></textarea>
+                    </div>
+                    <div>
+                        <button type="submit"
+                            class="w-full px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium transition-colors">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Reel<span class="gradient-text">Nex</span></h3>
+                    <p class="text-gray-400">
+                        Professional video editing services to help you create captivating content that stands
+                        out.
+                    </p>
+                    <div class="flex space-x-4 mt-6">
+                        <!-- <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a> -->
+                        <a href="https://www.instagram.com/reelnex.editing?utm_source=qr&igsh=YXc1YXE4cnhyc2Jt" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <!-- <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-youtube"></i>
+                        </a> -->
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors"
+                                onclick="event.preventDefault(); scrollToSection('services')">Basic Editing</a>
+                        </li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors"
+                                onclick="event.preventDefault(); scrollToSection('services')">Advanced
+                                Editing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors"
+                                onclick="event.preventDefault(); scrollToSection('services')">Full
+                                Production</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors"
+                                onclick="event.preventDefault(); scrollToSection('services')">Motion
+                                Graphics</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors"
+                                onclick="event.preventDefault(); scrollToSection('about')">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors"
+                                onclick="event.preventDefault(); scrollToSection('portfolio')">Portfolio</a>
+                        </li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors"
+                                onclick="event.preventDefault(); scrollToSection('contact')">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">
+                        Subscribe to our newsletter for the latest updates and video editing tips.
+                    </p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email"
+                            class="px-4 py-2 rounded-l-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-primary-500 w-full">
+                        <button type="submit"
+                            class="px-4 py-2 bg-primary-600 hover:bg-primary-700 rounded-r-lg transition-colors">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400">
+                    &copy; 2023 ReelNex. All rights reserved.
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+            });
+        }
+
+        if (mobileThemeToggle) {
+            mobileThemeToggle.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+            });
+        }
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', toggleMobileMenu);
+        }
+
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                window.scrollTo({
+                    top: section.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Get form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+
+                // Here you would typically send the form data to a server
+                console.log('Form submitted:', { name, email, subject, message });
+
+                // Show success message
+                alert('Thank you for your message! We will get back to you soon.');
+
+                // Reset form
+                contactForm.reset();
+            });
+        }
+
+        // Video card hover effect
+        const videoCards = document.querySelectorAll('.video-card');
+        videoCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.querySelector('.play-icon').classList.add('scale-110');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.querySelector('.play-icon').classList.remove('scale-110');
+            });
+        });
+
+
+        function openModal(videoSrc) {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('modalVideo');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            video.src = videoSrc;
+            video.play();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('modalVideo');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            video.pause();
+            video.currentTime = 0;
+            video.src = "";
+        }
+    </script>
+</body>
+
+</html>
